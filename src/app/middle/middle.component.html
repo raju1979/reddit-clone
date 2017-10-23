@@ -1,0 +1,71 @@
+<div class="container mt-5 text-center">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <h3 class="card-header">Add a link</h3>
+        <div class="card-block p-2 bg-info">
+          <form #f="ngForm" (ngSubmit)="onSubmit(f.valid,f.value)">
+            <div class="form-group row">
+              <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Title</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="add title" name="title" ngModel
+                  #title="ngModel" required>
+                <div class="text-warning" *ngIf="title.errors && (title.dirty || title.touched || f.submitted)">
+                  <p *ngIf="title.errors.required">
+                    The Title is required
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Link</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="add link" name="link" ngModel
+                  #link="ngModel" required>
+                <div class="text-warning" *ngIf="link.errors && (link.dirty || link.touched || f.submitted)">
+                  <p *ngIf="link.errors.required">
+                    The link is required
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-12 text-right">
+                <input class="btn btn-danger" type="submit" value="submit" [disabled]="!f.valid" />
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row text-center mt-4">
+    <div class="col-md-12 text-center">
+      <div class="redditCard" *ngFor="let card of redittDataArray">
+        <div class="pointsDiv d-flex flex-column justify-content-center align-items-center">
+          <span class="display-3">{{card?.upvotes - card?.downvotes}}</span>
+          <span>Points</span>
+        </div>
+
+        <div class="dataContainer p-1 d-flex flex-column justify-content-between">
+          <div class="dataTopContainer text-left">
+              <p class="m-0">{{card?.title}}</p>
+              <p class="text-muted"><small class="text-muted">({{card?.link}})</small></p>
+          </div>
+          <div class="dataBottomContainer">
+              <button href="#" routerLink="/" class="btn btn-link" (click)="upVote(card)">
+                <i class="fa fa-arrow-circle-o-up"></i> Upvote</button>
+              <button href="#" routerLink="/" class="btn btn-link"  (click)="downVote(card)">
+                <i class="fa fa-arrow-circle-o-down"></i> Downvote</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>

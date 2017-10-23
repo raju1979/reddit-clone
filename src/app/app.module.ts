@@ -6,12 +6,14 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { MiddleComponent } from './middle/middle.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    MiddleComponent
+    MiddleComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
